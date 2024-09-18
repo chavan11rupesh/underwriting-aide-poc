@@ -1,10 +1,10 @@
 package com.example.underwritingaidepoc.model;
 
 import jakarta.persistence.*;
-
 import lombok.*;
 
 @Getter
+@Setter
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
