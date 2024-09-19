@@ -8,5 +8,5 @@ public interface QuoteService {
 
     List<Quote> findAllQuotes();
 
-    Quote findQuoteById(Long id);
+    Quote findQuoteById(Integer id);
 }
