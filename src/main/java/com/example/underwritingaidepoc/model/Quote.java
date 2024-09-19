@@ -14,4 +14,5 @@ public class Quote {
     Integer id;
     Integer employerId;
     String name;
+
 }
