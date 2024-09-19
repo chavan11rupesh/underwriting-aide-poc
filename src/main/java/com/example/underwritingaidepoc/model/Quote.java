@@ -12,4 +12,6 @@ import lombok.NoArgsConstructor;
 public class Quote {
 
     Integer id;
+    Integer employerId;
+    String name;
 }
