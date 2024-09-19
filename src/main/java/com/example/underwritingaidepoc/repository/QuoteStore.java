@@ -21,17 +21,12 @@ public class QuoteStore {
     @Autowired
     private NamedParameterJdbcTemplate jdbcNamedTemplate;
 
-//    private final String findIntakeRegionThresholdQuery;
-//
-//    public QuoteStore(@Value("${sql.find-intake-region-threshold}") String findIntakeRegionThreshold) {
-//        this.findIntakeRegionThresholdQuery = findIntakeRegionThreshold;
-//    }
+    String findAllQuotesQuery = "select * from underwriting.quote";
 
 
     public List<Quote> findAllQuotes() {
-        return Collections.singletonList(jdbcNamedTemplate.query("select * from quote",
+        return Collections.singletonList(jdbcNamedTemplate.query(findAllQuotesQuery,
                 new QuoteExtractor()));
-
     }
 
 

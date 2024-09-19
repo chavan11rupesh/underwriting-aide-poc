@@ -14,13 +14,13 @@ public class QuoteService {
     QuoteStore quoteStore;
 
     public List<Quote> findAllQuotes() {
-        return quoteStore.findAllQuotes();
 
+        return quoteStore.findAllQuotes();
     }
 
     public Quote findQuoteById(Integer Id) {
-        return quoteStore.findQuoteById(Id);
 
+        return quoteStore.findQuoteById(Id);
     }
 
 }
