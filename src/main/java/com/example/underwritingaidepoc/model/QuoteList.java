@@ -1,11 +1,13 @@
 package com.example.underwritingaidepoc.model;
 
-import jakarta.persistence.Entity;
+import lombok.Builder;
+import lombok.Value;
 
-import java.util.ArrayList;
 import java.util.List;
 
+@Value
+@Builder(toBuilder = true)
 public class QuoteList {
-    public List<Quote> items= new ArrayList<>();
+    List<Quote> quotes;
 }
 

@@ -1,20 +1,15 @@
 package com.example.underwritingaidepoc.model;
 
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
-@Setter
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Entity
-@Table
+@Builder(toBuilder = true)
 public class Quote {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
+    Integer id;
 }
