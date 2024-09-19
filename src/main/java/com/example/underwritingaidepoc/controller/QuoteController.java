@@ -25,7 +25,7 @@ public class QuoteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Map<String, Object>> getQuote(@PathVariable Long id, @RequestParam Map<String, String> queryParams) {
+    public ResponseEntity<Map<String, Object>> getQuote(@PathVariable Integer id, @RequestParam Map<String, String> queryParams) {
         // Call manager.getQuote(id)
         return ResponseEntity.ok(Map.of("success", true, "quote", quoteService.findQuoteById(id)));
     }

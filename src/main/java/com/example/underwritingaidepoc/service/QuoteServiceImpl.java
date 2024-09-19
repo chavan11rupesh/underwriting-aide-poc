@@ -20,7 +20,7 @@ public class QuoteServiceImpl implements QuoteService{
     }
 
     @Override
-    public Quote findQuoteById(Long id) {
+    public Quote findQuoteById(Integer id) {
         return null;
     }
 }
