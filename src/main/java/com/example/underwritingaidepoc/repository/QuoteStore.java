@@ -26,18 +26,18 @@ public class QuoteStore {
     private NamedParameterJdbcTemplate jdbcNamedTemplate;
 
     private final String findAllQuotesQuery;
-    String findQuoteByIdQuery = "select * from underwriting.quote where id = :id";
+    private final String findQuoteByIdQuery ;
 
-    public QuoteStore() {
-        this.findAllQuotesQuery = Inquery.readQuery("sql/find-all-quotes");
+    public QuoteStore(@Value("${sql.find-all-quotes}") String findAllQuotes,
+                      @Value("${sql.find-quote-by-id}")String findQuoteById) {
+        this.findAllQuotesQuery = Inquery.readQuery(findAllQuotes);
+        this.findQuoteByIdQuery = Inquery.readQuery(findQuoteById);
     }
-
 
     public List<Quote> findAllQuotes() {
         return jdbcNamedTemplate.query(findAllQuotesQuery,
                                        new QuoteListExtractor());
     }
-
 
     public Quote findQuoteById(Integer Id) {
         return jdbcNamedTemplate.query(findQuoteByIdQuery,
