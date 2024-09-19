@@ -28,7 +28,7 @@ public class QuoteStore {
     private final String findAllQuotesQuery;
     String findQuoteByIdQuery = "select * from underwriting.quote where id = :id";
 
-    public QuoteStore(@Value("${sql.find-all-quotes}") String query) {
+    public QuoteStore() {
         this.findAllQuotesQuery = Inquery.readQuery("sql/find-all-quotes");
     }
 
