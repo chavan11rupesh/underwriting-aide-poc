@@ -5,6 +5,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,15 +26,16 @@ public class Quote {
     //String status;
     String inputSource;
     String workflowQuoteId;
-    String effectiveDate;
+    LocalDate effectiveDate;
+    LocalDateTime dateDeleted;
+    LocalDateTime lastUpdated;
+    LocalDateTime dateCreated;
     String preUnderwriterName;
     String preUnderwriterIdentifier;
     String underwriterAssignedIdentifier;
     String network;
-    String lastUpdated;
     String rateType;
     String brokerFee;
-    String dateCreated;
     String changeRequestReason;
     String isDeleted;
     String underwriterAssignedRole;
@@ -38,7 +44,6 @@ public class Quote {
     String salesRepresentativeName;
     String fundingArrangement;
     String channelPartnerStatus;
-    String dateDeleted;
     String underwriterAssignedName;
     String contractTypeMonthsPaidIn;
 

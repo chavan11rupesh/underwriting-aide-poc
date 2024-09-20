@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.ResultSetExtractor;
 
 import java.sql.ResultSet;
+import java.util.Optional;
 
 public class QuoteExtractor implements ResultSetExtractor<Quote> {
 
@@ -27,10 +28,18 @@ public class QuoteExtractor implements ResultSetExtractor<Quote> {
                         .brokerFee(resultSet.getString(QueryConstants.BROKER_FEE))
                         .isDeleted(resultSet.getString(QueryConstants.IS_DELETED))
                         .inputSource(resultSet.getString(QueryConstants.INPUT_SOURCE))
-                        .dateDeleted(resultSet.getString(QueryConstants.DATE_DELETED))
-                        .lastUpdated(resultSet.getString(QueryConstants.LAST_UPDATED))
-                        .dateCreated(resultSet.getString(QueryConstants.DATE_CREATED))
-                        .effectiveDate(resultSet.getString(QueryConstants.EFFECTIVE_DATE))
+                        .dateDeleted(resultSet.getTimestamp(QueryConstants.DATE_DELETED) != null
+                                ? resultSet.getTimestamp(QueryConstants.DATE_DELETED).toLocalDateTime()
+                                : null)
+                        .lastUpdated(resultSet.getTimestamp(QueryConstants.LAST_UPDATED) != null
+                                ? resultSet.getTimestamp(QueryConstants.LAST_UPDATED).toLocalDateTime()
+                                : null)
+                        .dateCreated(resultSet.getTimestamp(QueryConstants.DATE_CREATED) != null
+                                ? resultSet.getTimestamp(QueryConstants.DATE_CREATED).toLocalDateTime()
+                                : null)
+                        .effectiveDate(resultSet.getDate(QueryConstants.EFFECTIVE_DATE) != null
+                                ? resultSet.getDate(QueryConstants.EFFECTIVE_DATE).toLocalDate()
+                                : null)
                         .strategicFee(resultSet.getString(QueryConstants.STRATEGIC_FEE))
                         .workflowQuoteId(resultSet.getString(QueryConstants.WORKFLOW_QUOTE_ID))
                         .changeRequestReason(resultSet.getString(QueryConstants.CHANGE_REQUEST_REASON))
