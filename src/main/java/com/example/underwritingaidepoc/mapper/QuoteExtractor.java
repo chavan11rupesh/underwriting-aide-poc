@@ -12,11 +12,6 @@ public class QuoteExtractor implements ResultSetExtractor<Quote> {
 
     private static final Logger log = LoggerFactory.getLogger(QuoteExtractor.class);
 
-    public static final String ID = "id";
-    public static final String EMPLOYER_ID = "employer_id";
-    public static final String NAME = "name";
-
-
     @Override
     public Quote extractData(ResultSet resultSet) {
         try {
