@@ -46,7 +46,9 @@ public class Quote {
     String channelPartnerStatus;
     String underwriterAssignedName;
     String contractTypeMonthsPaidIn;
-
-
+    String employerName;
+    String externalId;
+    String status;
+    String source;
 
 }

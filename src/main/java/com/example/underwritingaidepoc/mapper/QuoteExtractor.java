@@ -56,6 +56,14 @@ public class QuoteExtractor implements ResultSetExtractor<Quote> {
                         .underwriterAssignedIdentifier(resultSet.getString(QueryConstants.UNDERWRITER_ASSIGNED_IDENTIFIER))
                         .contractTypeMonthsPaidIn(resultSet.getString(QueryConstants.CONTRACT_TYPE_MONTHS_PAID_IN))
                         .contractTypeMonthsIncurredIn(resultSet.getString(QueryConstants.CONTRACT_TYPE_MONTHS_INCURRED_IN))
+                        .status(resultSet.getString(QueryConstants.STATUS))
+                        .source(resultSet.getString(QueryConstants.SOURCE))
+                        .employerName(resultSet.getString(QueryConstants.EMPLOYER_NAME))
+                        .externalId(resultSet.getString(QueryConstants.EXTERNAL_ID))
+                        .status(resultSet.getString(QueryConstants.STATUS))
+                        .source(resultSet.getString(QueryConstants.SOURCE))
+                        .employerName(resultSet.getString(QueryConstants.EMPLOYER_NAME))
+                        .externalId(resultSet.getString(QueryConstants.EXTERNAL_ID))
                         .build();
             }
         }
@@ -63,7 +71,6 @@ public class QuoteExtractor implements ResultSetExtractor<Quote> {
             log.error("could not extract Quote: ", ex);
             throw new RuntimeException("could not extract Quote. ", ex);
         }
-
         return null;
     }
 }

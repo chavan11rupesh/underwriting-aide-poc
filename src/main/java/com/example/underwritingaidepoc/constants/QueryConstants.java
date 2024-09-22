@@ -6,9 +6,12 @@ public class QueryConstants {
     public static final String EMPLOYER_ID = "employer_id";
     public static final String NAME = "name";
     public static final String OWNER = "owner";
-    //public static final String STATUS = "status";
+    public static final String STATUS = "status";
+    public static final String SOURCE = "source";
+    public static final String EXTERNAL_ID = "external_id";
+    public static final String EMPLOYER_NAME = "employer_name";
     public static final String NETWORK = "network";
-    public static final String RATE_TYPE = "rate_Type";
+    public static final String RATE_TYPE = "rate_type";
     public static final String BROKER_FEE = "broker_fee";
     public static final String DATE_DELETED = "date_deleted";
     public static final String LAST_UPDATED = "last_updated";
