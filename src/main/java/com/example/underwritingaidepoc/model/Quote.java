@@ -23,7 +23,6 @@ public class Quote {
     String riskReviewerRole;
     String riskReviewerIdentifier;
     String owner;
-    //String status;
     String inputSource;
     String workflowQuoteId;
     LocalDate effectiveDate;

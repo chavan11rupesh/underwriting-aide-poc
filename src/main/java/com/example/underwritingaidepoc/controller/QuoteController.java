@@ -25,6 +25,7 @@ public class QuoteController {
     @GetMapping(path = "/")
     public ResponseEntity<?> findAllQuotes(@RequestParam Map<String, String> queryParams) {
 
+
         var quotes = quoteService.findAllQuotes();
         return new ResponseEntity<>(quotes, HttpStatus.OK);
     }

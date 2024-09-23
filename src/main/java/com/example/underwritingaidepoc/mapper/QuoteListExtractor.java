@@ -18,6 +18,8 @@ public class QuoteListExtractor implements ResultSetExtractor<List<Quote>> {
     private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public Quote mapQuote(ResultSet resultSet) throws SQLException {
+
+        log.info("the result set is :: {}", resultSet);
         return Quote.builder()
                 .id(Integer.valueOf(resultSet.getString(QueryConstants.ID)))
                 .employerId(Integer.valueOf(resultSet.getString(QueryConstants.EMPLOYER_ID)))

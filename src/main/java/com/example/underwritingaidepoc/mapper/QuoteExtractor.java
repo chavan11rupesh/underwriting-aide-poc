@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.ResultSetExtractor;
 
 import java.sql.ResultSet;
-import java.util.Optional;
 
 public class QuoteExtractor implements ResultSetExtractor<Quote> {
 
@@ -15,6 +14,7 @@ public class QuoteExtractor implements ResultSetExtractor<Quote> {
 
     @Override
     public Quote extractData(ResultSet resultSet) {
+        log.info("the result set is :: {}", resultSet);
         try {
             if (resultSet.next()) {
 
@@ -56,10 +56,6 @@ public class QuoteExtractor implements ResultSetExtractor<Quote> {
                         .underwriterAssignedIdentifier(resultSet.getString(QueryConstants.UNDERWRITER_ASSIGNED_IDENTIFIER))
                         .contractTypeMonthsPaidIn(resultSet.getString(QueryConstants.CONTRACT_TYPE_MONTHS_PAID_IN))
                         .contractTypeMonthsIncurredIn(resultSet.getString(QueryConstants.CONTRACT_TYPE_MONTHS_INCURRED_IN))
-                        .status(resultSet.getString(QueryConstants.STATUS))
-                        .source(resultSet.getString(QueryConstants.SOURCE))
-                        .employerName(resultSet.getString(QueryConstants.EMPLOYER_NAME))
-                        .externalId(resultSet.getString(QueryConstants.EXTERNAL_ID))
                         .status(resultSet.getString(QueryConstants.STATUS))
                         .source(resultSet.getString(QueryConstants.SOURCE))
                         .employerName(resultSet.getString(QueryConstants.EMPLOYER_NAME))
