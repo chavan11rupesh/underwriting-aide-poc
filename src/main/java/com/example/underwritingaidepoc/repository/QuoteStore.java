@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +42,10 @@ public class QuoteStore {
     }
 
     public Quote findQuoteById(Integer Id) {
+        // Create a parameter source and bind the id
+        SqlParameterSource namedParameters = new MapSqlParameterSource("id", Id);
         return jdbcNamedTemplate.query(findQuoteByIdQuery,
+                                       namedParameters,
                                        new QuoteExtractor());
     }
 }

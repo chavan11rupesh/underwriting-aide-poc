@@ -22,4 +22,4 @@ LEFT JOIN
 LEFT JOIN 
     LatestEvent AS le ON q.id = le.quote_id AND le.rn = 1
 WHERE 
-    q.id = 143;
+    q.id = :id;

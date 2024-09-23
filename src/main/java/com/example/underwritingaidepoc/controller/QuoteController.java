@@ -30,7 +30,7 @@ public class QuoteController {
         return new ResponseEntity<>(quotes, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(path = "/{id}")
     public ResponseEntity<Quote> findQuoteById(@PathVariable Integer id, @RequestParam Map<String, String> queryParams) {
 
         var quote = quoteService.findQuoteById(id);
