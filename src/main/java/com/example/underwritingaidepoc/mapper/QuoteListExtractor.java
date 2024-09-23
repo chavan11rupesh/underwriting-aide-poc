@@ -22,7 +22,9 @@ public class QuoteListExtractor implements ResultSetExtractor<List<Quote>> {
         log.info("the result set is :: {}", resultSet);
         return Quote.builder()
                 .id(Integer.valueOf(resultSet.getString(QueryConstants.ID)))
-                .employerId(Integer.valueOf(resultSet.getString(QueryConstants.EMPLOYER_ID)))
+                .employerId(resultSet.getString(QueryConstants.EMPLOYER_ID) == null
+                        ? null
+                        : Integer.valueOf(resultSet.getString(QueryConstants.EMPLOYER_ID)))
                 .name(resultSet.getString(QueryConstants.NAME))
                 .owner(resultSet.getString(QueryConstants.OWNER))
                 .network(resultSet.getString(QueryConstants.NETWORK))
