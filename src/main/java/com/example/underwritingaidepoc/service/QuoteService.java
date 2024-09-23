@@ -15,12 +15,14 @@ public class QuoteService {
 
     public List<Quote> findAllQuotes() {
 
-        return quoteStore.findAllQuotes();
+        // return quoteStore.findAllQuotes();
+        return quoteStore.findAllDummyQuotes();
     }
 
     public Quote findQuoteById(Integer Id) {
 
-        return quoteStore.findQuoteById(Id);
+        //return quoteStore.findQuoteById(Id);
+        return quoteStore.findDummyQuoteById(Id);
     }
 
 }
