@@ -7,10 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -19,6 +16,18 @@ public class QuoteController {
 
     @Autowired
     QuoteService quoteService;
+
+    @Autowired
+    private QuoteAssemblyManager quoteAssemblyManager;
+
+    @Autowired
+    private InputDataManager inputDataManager;
+
+    @Autowired
+    private QuoteManager quoteManager;
+
+    @Autowired
+    private InputDataValidator inputDataValidator;
 
     private static final Logger logger = LoggerFactory.getLogger(QuoteController.class);
 
@@ -36,4 +45,32 @@ public class QuoteController {
         var quote = quoteService.findQuoteById(id);
         return new ResponseEntity<>(quote, HttpStatus.OK);
     }
+
+    @PostMapping
+    public ResponseEntity<?> postInputData(@PathVariable("id") Integer quoteId, @RequestBody InputDataRequest inputDataRequest, @RequestParam Map<String, String> queryParameters) {
+        try {
+            // Validate input data
+            inputDataValidator.validate(inputDataRequest);
+
+            // Get quote and create input data
+            Quote quote = quoteService.findQuoteById(quoteId);
+            InputData inputData = inputDataManager.createInputData(quote, inputDataRequest, queryParameters);
+
+            // Return success response
+            return ResponseEntity.created("/quotes/" + quoteId + "/input-data").body(
+                    new InputDataResponse(true, inputData, quote));
+        } catch (Exception e) {
+            // Handle validation errors
+            if (e instanceof InputDataValidationException) {
+                InputDataValidationException validationException = (InputDataValidationException) e;
+                return ResponseEntity.badRequest().body(
+                        new InputDataResponse(false, null, null, validationException.getErrorCode(), validationException.getDetails()));
+            } else {
+                // Handle other exceptions
+                throw e;
+            }
+        }
+    }
+
+
 }
